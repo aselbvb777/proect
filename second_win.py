@@ -1,22 +1,23 @@
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from instr import *
+from final_win import *
 class TestWin(QWidget):
     def __init__(self):
-        QWidget().__init__()
+        super().__init__()
         self.initUI()
         self.connects()
         self.set_appear()
         self.show()
     def next_click(self):
-        self.tw = TestWin()
+        self.tw = FinalWin()
         self.hide()
-    def connects(self):
-        self.btn_next.clicked.connect(self.next_click)
     def set_appear(self):
         self.setWindowTitle(txt_title)
         self.resize(win_width,win_height)
         self.move(win_x,win_y)
+    def connects(self):
+        self.final.clicked.connect(self.next_click)
     def initUI(self):
         self.vline = QVBoxLayout()
         self.name = QLabel("Введите ФИО")
@@ -47,6 +48,7 @@ class TestWin(QWidget):
         self.vline.addWidget(self.start_quest3,alignment = Qt.AlignLeft)
         self.vline.addWidget(self.res_quest3,alignment = Qt.AlignLeft)
         self.vline.addWidget(self.final,alignment = Qt.AlignLeft)
+        self.setLayout(self.vline)
 
 
 
